@@ -1,5 +1,6 @@
 
 import './App.css';
+import Board from '../board/Board'
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <header>
         Trouble
       </header>
+      <Board/>
     </div>
   );
 }
