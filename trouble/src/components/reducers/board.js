@@ -1,7 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const createPositions = (count) => {
+  const positions = {}
+  const initialState = {
+    occupied: false,
+    playerOccupying: null
+  }
+  for(let i = 1; i <= count; i++) {
+    positions[i] = initialState;
+  }
+  return positions;
+}
+
 export const initialState = {
-  players: []
+  players: [],
+  positions: createPositions(2),
 }
 
 const boardSlice = createSlice({
