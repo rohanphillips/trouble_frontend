@@ -1,22 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux';
+import Position from '../position/position'
 
-const Board = (props) => {
-  const {boardState} = props
-  console.log("boardState", boardState)
+
+const Board = () => {
   return (
     <div>
       <h1>
         Board
-      </h1>
-      Occupied is {String(boardState.occupied)}
+      </h1>  
+      <Position position={1}/>
     </div>
   )
 }
 
-export default connect( state => {
-  const position = 2;
-  return {
-    boardState: state.boardState.positions[position],
-  }
-})(Board);
+export default Board
