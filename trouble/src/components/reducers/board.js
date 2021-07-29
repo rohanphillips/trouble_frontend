@@ -12,11 +12,7 @@ const createPositions = (count) => {
   return positions;
 }
 
-export const initialState = {
-  height: 700,
-  width: 900,
-  boardReducer: 100,
-  homeReducer: 150,
+export const initialState = {  
   players: [],
   positions: createPositions(60),
 }
