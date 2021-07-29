@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { initializePosition } from '../helpers/helpers'
 
 const createPositions = (count) => {
   const positions = {}
-  const initialState = {
-    occupied: false,
-    playerOccupying: null
-  }
+  
   for(let i = 1; i <= count; i++) {
-    positions[i] = initialState;
+    positions[i] = initializePosition(i);
   }
   return positions;
 }

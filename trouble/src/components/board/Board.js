@@ -42,10 +42,10 @@ const Board = (props) => {
           <Position position={26}/>
           <Position position={27}/>
           <Position position={28}/>
-          <Position position={29}/>
+          {/* <Position position={29}/>
           <Position position={30}/>
           <Position position={31}/>
-          <Position position={32}/>
+          <Position position={32}/> */}
           <div>
 
           </div>

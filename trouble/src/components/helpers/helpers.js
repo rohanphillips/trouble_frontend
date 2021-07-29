@@ -34,11 +34,32 @@ export const createLayerStyle = (layer, height, width, boardReducer) => {
 }
 
 export const createPositionStyle = (layer,height, width, boardReducer, position) => {
-  const coordinates = elipseCoordinates("board_layer", height, width, boardReducer, position, 8)
+  const coordinates = elipseCoordinates("board_layer", height, width, boardReducer, position, 7)
   switch(layer){
     case "board_layer":
       return {top: `${coordinates.y}px`, left: `${coordinates.x}px`, backgroundColor: 'rgb(255, 255, 255)'}
     default:
       return {top: `${coordinates.y}px`, left: `${coordinates.x}px`, backgroundColor: 'rgb(255, 255, 255)'}
   }
+}
+
+export const between = (x, min, max) => {
+  return x >= min && x <= max;
+}
+
+export const initializePosition = (counter) => {
+  let layerID = ""
+    if(between(counter, 1, 28)){
+      layerID = "board_layer"
+    } else if(between(counter, 29, 44)){
+      layerID = "start_layer"
+    } else if(between(counter, 45, 60)){
+      layerID = "home_layer"
+    }
+
+    return {
+      occupied: false,
+      playerOccupying: null,
+      layerID: layerID
+    }
 }
