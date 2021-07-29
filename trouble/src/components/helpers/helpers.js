@@ -17,7 +17,7 @@ const elipseCoordinates = (layer,height, width, boardReducer, position, position
   }
 }
 
-export const createLayerStyle = (layer, height, width, boardReducer) => {
+export const createLayerStyle = (layer, height, width, boardReducer, homeReducer) => {
   let top = 0
   let left = 0
   switch(layer){
@@ -26,7 +26,13 @@ export const createLayerStyle = (layer, height, width, boardReducer) => {
       height = height - boardReducer
       top = boardReducer / 2
       left = boardReducer / 2
-    break;
+      break;
+    case "home_layer":
+      width = width - boardReducer - homeReducer;
+      height = height - boardReducer - homeReducer;
+      top = homeReducer / 2;
+      left = homeReducer / 2;
+      break;
     default:
       break;
   }

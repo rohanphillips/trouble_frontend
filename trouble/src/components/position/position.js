@@ -5,9 +5,9 @@ import styles from './Position.module.css'
 
 const Position = (props) => {
   const { position } = props
-  const { height, width, boardReducer } = props.settings
+  const { height, width, boardReducer, layerID } = props.settings
   return (
-    <div className={styles.elipsoid_board} style={createPositionStyle("board_layer", height, width, boardReducer, position)}>
+    <div className={styles.elipsoid_board} style={createPositionStyle(layerID, height, width, boardReducer, position)}>
     </div>
 
   )

@@ -6,14 +6,14 @@ import {createLayerStyle} from '../helpers/helpers'
 
 
 const Board = (props) => {
-  const { height, width, boardReducer } = props.settings
+  const { height, width, boardReducer, homeReducer } = props.settings
   return (
     <div >
       <h1>
         Board
       </h1>
-      <div className={styles.start_layer} style={createLayerStyle("start_layer", height, width, boardReducer)}>
-        <div className={styles.board_layer} style={createLayerStyle("board_layer", height, width, boardReducer)}>
+      <div className={styles.start_layer} style={createLayerStyle("start_layer", height, width, boardReducer, homeReducer)}>
+        <div className={styles.board_layer} style={createLayerStyle("board_layer", height, width, boardReducer, homeReducer)}>
           <Position position={1}/>
           <Position position={2}/>
           <Position position={3}/>
@@ -46,8 +46,12 @@ const Board = (props) => {
           <Position position={30}/>
           <Position position={31}/>
           <Position position={32}/> */}
-          <div>
-
+          <div className={styles.home_layer} style={createLayerStyle("home_layer", height, width, boardReducer, homeReducer)}>
+            <Position position={29}/>
+            <Position position={30}/>
+            <Position position={31}/>
+            <Position position={32}/>
+            <Position position={33}/>
           </div>
         </div>
       </div>  

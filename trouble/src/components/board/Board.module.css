@@ -4,6 +4,11 @@
   background-color: burlywood;
 }
 
+.home_layer {
+  position: relative;
+  border:1px dashed rgb(10, 133, 47);
+}
+
 .board_layer {
   position: absolute;
   border:1px dashed rgb(67, 22, 190);
