@@ -1,5 +1,5 @@
 
-export const elipseCoordinates = (layer,height, width, boardReducer, position, positions) => {
+const elipseCoordinates = (layer,height, width, boardReducer, position, positions) => {
   const angleIncrement =( Math.PI / 2 ) / positions;
   switch(layer){
     case "board_layer":
@@ -31,4 +31,14 @@ export const createLayerStyle = (layer, height, width, boardReducer) => {
       break;
   }
   return {width: `${width}px`, height: `${height}px`, top: `${top}px`, left: `${left}px`}
+}
+
+export const createPositionStyle = (layer,height, width, boardReducer, position) => {
+  const coordinates = elipseCoordinates("board_layer", height, width, boardReducer, position, 8)
+  switch(layer){
+    case "board_layer":
+      return {top: `${coordinates.y}px`, left: `${coordinates.x}px`, backgroundColor: 'rgb(255, 255, 255)'}
+    default:
+      return {top: `${coordinates.y}px`, left: `${coordinates.x}px`, backgroundColor: 'rgb(255, 255, 255)'}
+  }
 }
