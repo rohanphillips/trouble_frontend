@@ -8,7 +8,7 @@ function App() {
       <header>
         Trouble
       </header>
-      <Board position={1}/>
+      <Board/>
     </div>
   );
 }
