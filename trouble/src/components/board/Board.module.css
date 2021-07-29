@@ -1,0 +1,10 @@
+.start_layer {
+  position:relative;
+  border:1px dashed rgb(145, 19, 19);
+  background-color: burlywood;
+}
+
+.board_layer {
+  position: absolute;
+  border:1px dashed rgb(67, 22, 190);
+}

@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Position from '../position/position'
+import Position from '../position/Position'
+import styles from './Board.module.css'
 
 
 const Board = (props) => {
   const { height, width } = props.settings
   return (
-    <div >
+    <div className={styles.start_layer} style={{width: `${width}px`, height: `${height}px`}}>
       <h1>
         Board
       </h1>  
-      <div style={{width: `${width}px`, height: `${height}px`}}>
+      <div className={styles.board_layer} style={{width: `${width - 100}px`, height: `${height - 100}px`}}>
         <Position position={1}/>
         <Position position={2}/>
         <Position position={3}/>
