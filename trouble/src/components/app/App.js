@@ -8,7 +8,18 @@ function App() {
       <header>
         Trouble
       </header>
-      <Board/>
+      <table>
+        <th>
+          <tr>
+            <td>
+              Console
+            </td>
+            <td>
+              <Board/>
+            </td>
+          </tr>
+        </th>
+      </table>      
     </div>
   );
 }

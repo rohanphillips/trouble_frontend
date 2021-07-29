@@ -15,3 +15,15 @@
   background: transparent;
   box-shadow: 0 0 3px gray;
 }
+
+.elipsoid_home {  
+  position:absolute;
+  width: 30px;
+  height: 30px;
+  border-radius:50%;
+  border: 10px solid #98a1a4;
+  overflow: hidden;
+  background: transparent;
+  opacity: 75%;
+  box-shadow: 0 0 3px gray;
+}

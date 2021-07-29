@@ -4,10 +4,10 @@ import { createPositionStyle } from '../helpers/helpers'
 import styles from './Position.module.css'
 
 const Position = (props) => {
-  const { boardPosition, layerID } = props.boardPositionData
+  const { boardPosition, layerID, style } = props.boardPositionData
   const { height, width, boardReducer, homeReducer } = props.settings
   return (
-    <div className={styles.elipsoid_board} style={createPositionStyle(layerID, height, width, boardReducer, homeReducer, boardPosition)}>
+    <div className={styles[style]} style={createPositionStyle(layerID, height, width, boardReducer, homeReducer, boardPosition)}>
     </div>
 
   )
