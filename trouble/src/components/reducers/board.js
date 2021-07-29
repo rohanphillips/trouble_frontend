@@ -14,7 +14,7 @@ const createPositions = (count) => {
 
 export const initialState = {
   players: [],
-  positions: createPositions(2),
+  positions: createPositions(60),
 }
 
 const boardSlice = createSlice({
