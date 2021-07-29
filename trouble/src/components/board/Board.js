@@ -1,14 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Position from '../position/position'
 
 
-const Board = () => {
+const Board = (props) => {
+  const { height, width } = props.settings
   return (
-    <div>
+    <div >
       <h1>
         Board
       </h1>  
-      <div>
+      <div style={{width: `${width}px`, height: `${height}px`}}>
         <Position position={1}/>
         <Position position={2}/>
         <Position position={3}/>
@@ -24,4 +26,9 @@ const Board = () => {
   )
 }
 
-export default Board
+export default connect( state => {
+  return {
+    settings: state.settingsState,
+  }
+}
+)(Board)

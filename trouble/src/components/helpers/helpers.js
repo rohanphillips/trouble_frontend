@@ -1,3 +1,4 @@
+
 export const elipseCoordinates = (height, width, position, positions) => {
   const angleIncrement =( Math.PI / 2 ) / positions;
   const halfWidth = width / 2;
