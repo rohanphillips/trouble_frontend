@@ -12,7 +12,23 @@ const Board = (props) => {
       <h1>
         Board
       </h1>
-      <div className={styles.start_layer} style={createLayerStyle("start_layer", height, width, boardReducer, homeReducer)}>
+      <div className={styles.start_layer} style={createLayerStyle("start_layer", height, width, boardReducer, homeReducer)}> 
+        <Position position={29}/>
+        <Position position={30}/>
+        <Position position={31}/>
+        <Position position={32}/>
+        <Position position={33}/>
+        <Position position={34}/>
+        <Position position={35}/>
+        <Position position={36}/>
+        <Position position={37}/>
+        <Position position={38}/>
+        <Position position={39}/>
+        <Position position={40}/>
+        <Position position={41}/>
+        <Position position={42}/>
+        <Position position={43}/>
+        <Position position={44}/>       
         <div className={styles.board_layer} style={createLayerStyle("board_layer", height, width, boardReducer, homeReducer)}>
           <Position position={1}/>
           <Position position={2}/>
@@ -42,18 +58,25 @@ const Board = (props) => {
           <Position position={26}/>
           <Position position={27}/>
           <Position position={28}/>
-          {/* <Position position={29}/>
-          <Position position={30}/>
-          <Position position={31}/>
-          <Position position={32}/> */}
           <div className={styles.home_layer} style={createLayerStyle("home_layer", height, width, boardReducer, homeReducer)}>
-            <Position position={29}/>
-            <Position position={30}/>
-            <Position position={31}/>
-            <Position position={32}/>
-            <Position position={33}/>
+            <Position position={45}/>
+            <Position position={46}/>
+            <Position position={47}/>
+            <Position position={48}/>
+            <Position position={49}/>
+            <Position position={50}/>
+            <Position position={51}/>
+            <Position position={52}/>
+            <Position position={53}/>
+            <Position position={54}/>
+            <Position position={55}/>
+            <Position position={56}/>
+            <Position position={57}/>
+            <Position position={58}/>
+            <Position position={59}/>
+            <Position position={60}/>
           </div>
-        </div>
+        </div>        
       </div>  
     </div>
   )
