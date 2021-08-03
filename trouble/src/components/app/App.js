@@ -1,5 +1,6 @@
 
 import './App.css';
+import GameController from '../control/GameController';
 import Board from '../board/Board'
 
 function App() {
@@ -9,16 +10,14 @@ function App() {
         Trouble
       </header>
       <table>
-        <th>
-          <tr>
-            <td>
-              Console
-            </td>
-            <td>
-              <Board/>
-            </td>
-          </tr>
-        </th>
+        <tr>
+          <th>
+            <GameController/>
+          </th>
+          <td>
+            <Board/>
+          </td>
+        </tr>
       </table>      
     </div>
   );

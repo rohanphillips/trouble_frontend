@@ -37,6 +37,12 @@ export const createLayerStyle = (layer, height, width, boardReducer, homeReducer
       top = homeReducer / 2;
       left = homeReducer / 2;
       break;
+    case "popper_layer":
+      width = width - (2 * (boardReducer + homeReducer));
+      height = height - (2 * (boardReducer + homeReducer));
+      top = homeReducer / 2;
+      left = boardReducer / 15;
+      break;
     default:
       break;
   }
@@ -101,4 +107,8 @@ export const initializePosition = (counter) => {
     layerID: layerID,
     style: style
   }
+}
+
+export const randomColor = () => {
+  return "#" + Math.floor(Math.random()*16777215).toString(16);
 }

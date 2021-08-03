@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import Position from '../position/Position'
 import styles from './Board.module.css'
 import {createLayerStyle} from '../helpers/helpers'
+import DieHolder from '../dice/DieHolder'
 
 
 const Board = (props) => {
   const { height, width, boardReducer, homeReducer } = props.settings
+  
   return (
-    <div >
+    <div>
       <h1>
         Board
       </h1>
@@ -28,7 +30,11 @@ const Board = (props) => {
         <Position position={41}/>
         <Position position={42}/>
         <Position position={43}/>
-        <Position position={44}/>       
+        <Position position={44}/>  
+        <div className={styles.popper_layer} style={createLayerStyle("popper_layer", height, width, boardReducer, homeReducer)}>
+          <DieHolder/> 
+        </div>
+            
         <div className={styles.board_layer} style={createLayerStyle("board_layer", height, width, boardReducer, homeReducer)}>
           <Position position={1}/>
           <Position position={2}/>
