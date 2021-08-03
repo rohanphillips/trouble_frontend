@@ -14,7 +14,13 @@ export const initialState = {
   players: [],
   positions: createPositions(60),
   currentRoll: 3, 
-  inProgress: false
+  inProgress: false,
+  defaultPlayerColors: [
+    {r: 255, g: 0, b: 0, a: 1},
+    {r: 0, g: 255, b: 0, a: 1},
+    {r: 0, g: 0, b: 255, a: 1},
+    {r: 255, g: 255, b: 0, a: 1},
+  ]
 }
 
 const boardSlice = createSlice({
