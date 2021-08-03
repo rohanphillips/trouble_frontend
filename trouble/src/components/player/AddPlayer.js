@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux'
 import { SketchPicker } from 'react-color'
 
 const AddPlayer = (props) => {
   const [playername, setPlayerName] = useState("")
-  const { playerAdded } = props
+  const { playerAdded, playerCount } = props
   console.log(playername)
 
   const returnedColor = (color) => {
     console.log(color)
   }
-  
+
   return (
     <div>
       AddPlayer
@@ -30,4 +31,8 @@ const AddPlayer = (props) => {
   )
 }
 
-export default AddPlayer
+export default connect( state => {
+  return {
+    defaultPlayerColors: state.boardState.defaultPlayerColors
+  }
+})(AddPlayer)

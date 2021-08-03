@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createPositionStyle } from '../helpers/helpers'
+import { createPositionStyle } from '../helpers/board/helpers'
 import styles from './Position.module.css'
 
 const Position = (props) => {

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { initializePosition } from '../helpers/helpers'
+import { initializePosition } from '../helpers/board/helpers'
 
 const createPositions = (count) => {
   const positions = {}

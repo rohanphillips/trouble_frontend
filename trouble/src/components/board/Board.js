@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Position from '../position/Position'
 import styles from './Board.module.css'
-import {createLayerStyle} from '../helpers/helpers'
+import {createLayerStyle} from '../helpers/board/helpers'
 import DieHolder from '../dice/DieHolder'
 
 

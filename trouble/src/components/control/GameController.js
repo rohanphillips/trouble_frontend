@@ -23,7 +23,7 @@ const GameController = (props) => {
         }
       </div>
       {addingPlayer &&
-        <AddPlayer playerAdded={playerAdded}/>
+        <AddPlayer playerAdded={playerAdded} player={playerCount + 1}/>
       } 
     </div>
   )
