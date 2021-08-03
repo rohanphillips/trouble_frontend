@@ -13,7 +13,8 @@ const createPositions = (count) => {
 export const initialState = {  
   players: [],
   positions: createPositions(60),
-  currentRoll: 3
+  currentRoll: 3, 
+  inProgress: false
 }
 
 const boardSlice = createSlice({
@@ -25,9 +26,12 @@ const boardSlice = createSlice({
     },
     updateRoll(state, action){
       state.currentRoll = action.payload
+    }, 
+    updateInProgress(state, action){
+      state.inProgress = action.payload
     }
   }
 })
 
-export const { addPlayer, updateRoll } = boardSlice.actions
+export const { addPlayer, updateRoll, updateInProgress } = boardSlice.actions
 export default boardSlice.reducer
