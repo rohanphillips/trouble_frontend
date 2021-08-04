@@ -2,34 +2,56 @@ export const movePiece = (data) => {
   let boardPosition
   let player
   let otherPiece
+  let newLocation
   //I will check if piece is in the start position
-  const piece = data.pieceToMove
-  const isStartPosition = piece.playerLocation <= 4
+  const { pieceToMove, boardPositions, players, movePositions, pieceMove } = data
+  const isStartPosition = pieceToMove.playerLocation <= 4
   //handle if it is
   //piece needs to move to start location
   //get player start board location from playerPosition 5
-  player = data.players[piece.playerNumber - 1]
+  player = players[pieceToMove.playerNumber - 1]
+  console.log("movePiece Enter", player)
   if(isStartPosition) {    
-    const playerStartLocation = player.locations[5]
-    boardPosition = data.boardPostions[playerStartLocation]
+    console.log("isStartPosition")
+    const playerStartLocation = player.locations[5].boardLocation
+    console.log("playerStartLocation", playerStartLocation)
+    boardPosition = boardPositions[playerStartLocation]
+    console.log("boardPosition", boardPosition)
+    newLocation = playerStartLocation
   } else {
     //not a start position, get boardPosition x spaces ahead
-    const moveToLocation = player.locations[piece.playerLocation + data.movePositions]
-    boardPosition = data.boardPosition[moveToLocation]
+    console.log("isNotStartPosition")
+    const moveToLocation = player.locations[pieceToMove.playerLocation + movePositions].boardLocation
+    console.log("moveToLocation", moveToLocation)
+    boardPosition = boardPositions[moveToLocation]
+    console.log("boardPosition", boardPosition)
+    newLocation = moveToLocation
   }
   //check if forward location is empty
+  console.log("will check if boardPosition occupied")
   if(!isBoardPositionOccupied(boardPosition)) {
-    //if it is, move piece
+    //if it is not occupied, move piece
+    console.log("isNotOccupied")
+    const pieceMovePayload = {
+      oldLocation: pieceToMove.boardLocation,
+      newLocation: newLocation,
+      piece: pieceToMove,
+      newPlayerLocation: isStartPosition ? 5 : pieceToMove.playerLocation + movePositions
+    }  
+    console.log("payLoad:", pieceMovePayload)
+    pieceMove(pieceMovePayload)
   } else {
     //if it's not
     //check if own piece
+    console.log("isOccupied")
     otherPiece = data.boardPostion.pieceOccupying
-    if(isPieceFromSamePlayer(piece, otherPiece)) {
+    if(isPieceFromSamePlayer(pieceToMove, otherPiece)) {
       //if it is, piece can't move
+      console.log("is piece from same player")
     } else {      
       //if it's not, it's another players piece, send that piece to the players move position
       //send other players piece home
-
+      console.log("is piece from another player")
       // move this piece to new location
     }
   }

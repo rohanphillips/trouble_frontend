@@ -23,6 +23,8 @@ const Position = (props) => {
 
   if(occupied) positionStyle.borderColor = props.boardPositionData.pieceOccupying.color
 
+  
+
   return (
     <div onClick={positionClicked} className={styles[style]} style={positionStyle}>
     </div>

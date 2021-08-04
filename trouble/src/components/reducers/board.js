@@ -66,9 +66,30 @@ const boardSlice = createSlice({
     },
     isMoveRequestedSet(state, action){
       state.isMoveRequested = action.payload
+    },
+    pieceMove(state, action){
+      console.log("pieceMove called", action.payload)
+      const { oldLocation, newLocation, piece, newPlayerLocation } = action.payload
+
+      const modifyPiece = state.players[piece.playerNumber - 1].pieces[piece.id]
+      modifyPiece.playerLocation = newPlayerLocation
+      modifyPiece.boardLocation = newLocation
+
+      let boardPosition = state.positions[oldLocation]
+      boardPosition.occupied = false
+      boardPosition.pieceOccupying = null
+      boardPosition.style = "elipsoid_board"
+
+      boardPosition = state.positions[newLocation]
+      boardPosition.occupied = true
+      boardPosition.pieceOccupying = modifyPiece
+      boardPosition.style = "player_piece"
+
+      
+      state.isMoveRequested = false
     }
   }
 })
 
-export const { addPlayer, updateRoll, updateInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet} = boardSlice.actions
+export const { addPlayer, updateRoll, updateInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet, pieceMove} = boardSlice.actions
 export default boardSlice.reducer

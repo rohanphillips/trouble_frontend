@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { isMoveRequestedSet } from '../reducers/board'
+import { isMoveRequestedSet, pieceMove } from '../reducers/board'
 import { movePiece } from '../helpers/gamelogic/helpers'
 
 const GameLogic = (props) => {
-  const { pieceToMove, isMoveRequested, isMoveRequestedSet, boardPositions, players } = props
+  const { pieceToMove, isMoveRequested, isMoveRequestedSet, boardPositions, players, pieceMove } = props
   
   console.log("GameLogic:", isMoveRequested, pieceToMove)
   if(isMoveRequested){
@@ -13,9 +13,10 @@ const GameLogic = (props) => {
       pieceToMove: pieceToMove,
       players: players,
       movePositions: 1,
+      pieceMove: pieceMove
     }
     movePiece(data);
-    isMoveRequestedSet(false)
+    // isMoveRequestedSet(false)
   }
   return (
     <div>
@@ -30,4 +31,4 @@ export default connect ( state => {
     boardPositions: state.boardState.positions,
     players: state.boardState.players,
   }
-}, { isMoveRequestedSet }) (GameLogic)
+}, { isMoveRequestedSet, pieceMove }) (GameLogic)
