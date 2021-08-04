@@ -46,7 +46,6 @@ export const createLayerStyle = (layer, height, width, boardReducer, homeReducer
     default:
       break;
   }
-  console.log("layer", layer)
   return {width: `${width}px`, height: `${height}px`, top: `${top}px`, left: `${left}px`}
 }
 

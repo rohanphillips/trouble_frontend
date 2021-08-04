@@ -20,7 +20,6 @@ const AddPlayer = (props) => {
   }
 
   playercolor === "" && setPlayerColor(getDefaultPlayerColors(players, defaultPlayerColors)[0])
-  // console.log("getDefaultPlayerColors", getDefaultPlayerColors(players, defaultPlayerColors))
   return (
     <div>
       AddPlayer

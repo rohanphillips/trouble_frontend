@@ -7,12 +7,10 @@ const Position = (props) => {
   const { boardPosition, layerID, style } = props.boardPositionData
   // const { color } = props.boardPositionData.pieceOccupying.color
   const { height, width, boardReducer, homeReducer } = props.settings
-  const { position, occupied } = props
+  const { occupied } = props
 
   const positionStyle = createPositionStyle(layerID, height, width, boardReducer, homeReducer, boardPosition)
   if(occupied) positionStyle.borderColor = props.boardPositionData.pieceOccupying.color
-  // occupied && positionStyle.borderColor = "red"
-  console.log("boardPosition updated", position, props.boardPositionData, positionStyle)
   return (
     <div className={styles[style]} style={positionStyle}>
     </div>

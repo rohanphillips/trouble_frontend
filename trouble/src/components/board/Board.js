@@ -8,7 +8,6 @@ import DieHolder from '../dice/DieHolder'
 
 const Board = (props) => {
   const { height, width, boardReducer, homeReducer } = props.settings
-  console.log("settings", props.state)
   return (
     <div>
       <h1>

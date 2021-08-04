@@ -28,7 +28,6 @@ const boardSlice = createSlice({
   initialState: initialState,
   reducers: {
     addPlayer(state, action){
-      console.log("addPlayer:", action.payload)
       state.players.push(action.payload)
     },
     deletePlayer(state, action){      
