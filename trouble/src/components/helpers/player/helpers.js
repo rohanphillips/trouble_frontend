@@ -1,21 +1,27 @@
+import { rgbToHex } from '../controller/helpers'
+
 export const createNewPlayer = (playerNo, playerName, playerColor) => {
+  const info ={
+    playerNo: playerNo,
+    playerColor: playerColor
+  }
   const player = {
     playerNumber: playerNo,
     name: playerName,
     color: playerColor,
-    pieces: createPieces(playerNo),
-    locations: createLocations(playerNo, 36)    
+    pieces: createPieces(info),
+    locations: createLocations(info, 36)    
   }
   return player
 }
 
-const createLocations = (playerNo, count) => {
+const createLocations = (info, count) => {
   let locations = {}
   for(let i = 1; i <= count; i++) {
     locations[i] = {
       occupied: false,
       piece: null,
-      boardLocation: generateBoardLocation(boardMap, playerNo, i)
+      boardLocation: generateBoardLocation(boardMap, info, i)
     }
   }
   return locations;
@@ -44,34 +50,35 @@ const boardMap = {
   },
 }
 
-const generateBoardLocation = (boardMap, playerNo, location) => {
+const generateBoardLocation = (boardMap, info, location) => {
   let startingBoardPosition
   const boardAdjust = () => {
-    const calc = location + boardMap[playerNo].board
+    const calc = location + boardMap[info.playerNo].board
     calc <= 28 ? startingBoardPosition = calc : startingBoardPosition = calc - 28
   }
   if(location > 0 && location <=4){
-    startingBoardPosition = location + boardMap[playerNo].start
+    startingBoardPosition = location + boardMap[info.playerNo].start
   } else if(location > 4 && location <= 32){
     boardAdjust()
   } else if(location > 32){
-    startingBoardPosition = location + boardMap[playerNo].home
+    startingBoardPosition = location + boardMap[info.playerNo].home
   }
   return startingBoardPosition
 }
 
-const createPieces = (playerNo) => {
+const createPieces = (info) => {
   let pieces = {}
   for(let i = 0; i < 4; i++) {
-    pieces[i + 1] = createPiece(i + 1, playerNo) 
+    pieces[i + 1] = createPiece(i + 1, info) 
   }
   return pieces
 }
 
-const createPiece = (id, playerNo) => {
+const createPiece = (id, info) => {
   const piece = {
     id: id,
-    playerNumber: playerNo,
+    playerNumber: info.playerNo,
+    color: rgbToHex(info.playerColor),
     boardLocation: -1
   }
   return piece

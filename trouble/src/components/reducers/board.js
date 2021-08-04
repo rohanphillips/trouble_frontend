@@ -53,6 +53,7 @@ const boardSlice = createSlice({
       location.piece = piece
       boardLocation.occupied = true
       boardLocation.pieceOccupying = piece
+      boardLocation.style = "player_piece"
     }
   }
 })

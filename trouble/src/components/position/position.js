@@ -3,13 +3,18 @@ import { connect } from 'react-redux'
 import { createPositionStyle } from '../helpers/board/helpers'
 import styles from './Position.module.css'
 
-const Position = (props) => {
+const Position = (props) => {  
   const { boardPosition, layerID, style } = props.boardPositionData
+  // const { color } = props.boardPositionData.pieceOccupying.color
   const { height, width, boardReducer, homeReducer } = props.settings
-  const { position } = props
-  console.log("boardPosition updated", position, props.boardPositionData)
+  const { position, occupied } = props
+
+  const positionStyle = createPositionStyle(layerID, height, width, boardReducer, homeReducer, boardPosition)
+  if(occupied) positionStyle.borderColor = props.boardPositionData.pieceOccupying.color
+  // occupied && positionStyle.borderColor = "red"
+  console.log("boardPosition updated", position, props.boardPositionData, positionStyle)
   return (
-    <div className={styles[style]} style={createPositionStyle(layerID, height, width, boardReducer, homeReducer, boardPosition)}>
+    <div className={styles[style]} style={positionStyle}>
     </div>
 
   )
@@ -20,7 +25,7 @@ export default connect( ( state, ownProps ) => {
   return {
     occupied: state.boardState.positions[position].occupied,
     boardPositionData: state.boardState.positions[position],
-    settings: state.settingsState
+    settings: state.settingsState,
   }
 }
 
