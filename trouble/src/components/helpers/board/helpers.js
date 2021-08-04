@@ -102,7 +102,7 @@ export const initializePosition = (counter) => {
 
   return {
     occupied: false,
-    playerOccupying: null,
+    pieceOccupying: null,
     boardPosition: boardPosition,
     layerID: layerID,
     style: style

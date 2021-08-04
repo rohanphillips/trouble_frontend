@@ -8,7 +8,7 @@ import DieHolder from '../dice/DieHolder'
 
 const Board = (props) => {
   const { height, width, boardReducer, homeReducer } = props.settings
-  
+  console.log("settings", props.state)
   return (
     <div>
       <h1>
@@ -91,6 +91,7 @@ const Board = (props) => {
 export default connect( state => {
   return {
     settings: state.settingsState,
+    state: state
   }
 }
 )(Board)

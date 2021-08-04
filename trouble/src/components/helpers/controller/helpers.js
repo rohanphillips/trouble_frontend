@@ -8,3 +8,9 @@ export const getDefaultPlayerColors = (currentPlayers, defaultColors) => {
   const filtered = defaultColors.filter(c => currentPlayers.filter(p => rgbToHex(p.color) === rgbToHex(c)).length === 0)
   return filtered
 }
+
+export const initializeBoard = (initializePlayer, players) => {  
+  for(let i = 0; i < players.length; i++){
+    initializePlayer(i)
+  }
+}

@@ -42,9 +42,20 @@ const boardSlice = createSlice({
     },
     updatePositionOccupied(state, action){
       state.positions[action.payload].occupied = action.payload
+    },
+    initializePlayer(state, action){
+      const player = state.players[action.payload]
+      const piece = player.pieces[1]
+      const location = player.locations[1]
+      const boardLocation = state.positions[location.boardLocation]
+      piece.boardLocation = location.boardLocation
+      location.occupied = true
+      location.piece = piece
+      boardLocation.occupied = true
+      boardLocation.pieceOccupying = piece
     }
   }
 })
 
-export const { addPlayer, updateRoll, updateInProgress, deletePlayer, updatePositionOccupied } = boardSlice.actions
+export const { addPlayer, updateRoll, updateInProgress, deletePlayer, updatePositionOccupied, initializePlayer} = boardSlice.actions
 export default boardSlice.reducer
