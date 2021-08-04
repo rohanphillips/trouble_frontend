@@ -3,23 +3,19 @@ import { connect } from 'react-redux'
 import { SketchPicker } from 'react-color'
 import { addPlayer } from '../reducers/board'
 import { getDefaultPlayerColors } from '../helpers/controller/helpers'
+import { createNewPlayer } from '../helpers/player/helpers'
 
 const AddPlayer = (props) => {
   const [playername, setPlayerName] = useState("")
   const [playercolor, setPlayerColor] = useState("")
   const { playerAdded, playerCount, defaultPlayerColors, addPlayer, players } = props
-  console.log(playername)
 
   const returnedColor = (color) => {
     setPlayerColor(color.rgb)
   }
 
   const createPlayer = () => {
-    const player = {
-      name: playername,
-      color: playercolor
-    }
-    addPlayer(player)
+    addPlayer(createNewPlayer(playerCount + 1, playername, playercolor))
     playerAdded()
   }
 

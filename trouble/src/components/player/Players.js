@@ -4,6 +4,8 @@ import Player from './Player'
 
 const Players = (props) => {
   const { players } = props
+
+  console.log("Players: players:", players)
   return (
     <div>
       Players List

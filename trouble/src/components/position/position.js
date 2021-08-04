@@ -6,7 +6,6 @@ import styles from './Position.module.css'
 const Position = (props) => {
   const { boardPosition, layerID, style } = props.boardPositionData
   const { height, width, boardReducer, homeReducer } = props.settings
-  console.log("position", boardPosition)
   return (
     <div className={styles[style]} style={createPositionStyle(layerID, height, width, boardReducer, homeReducer, boardPosition)}>
     </div>
