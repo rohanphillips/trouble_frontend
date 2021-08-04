@@ -7,7 +7,7 @@ const GameLogic = (props) => {
   const { pieceToMove, isMoveRequested, isMoveRequestedSet, boardPositions, players, pieceMove } = props
   
   console.log("GameLogic:", isMoveRequested, pieceToMove)
-  if(isMoveRequested && pieceToMove.playerLocation < 36){
+  if(isMoveRequested){
     const data = {
       boardPositions: boardPositions,
       pieceToMove: pieceToMove,
@@ -16,7 +16,7 @@ const GameLogic = (props) => {
       pieceMove: pieceMove
     }
     movePiece(data);
-    // isMoveRequestedSet(false)
+    isMoveRequested && isMoveRequestedSet(false)
   }
   return (
     <div>

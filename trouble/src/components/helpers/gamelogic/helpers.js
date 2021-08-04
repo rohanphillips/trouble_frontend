@@ -9,6 +9,7 @@ export const movePiece = (data) => {
   //handle if it is
   //piece needs to move to start location
   //get player start board location from playerPosition 5
+  if(pieceToMove.playerLocation === 36) return false
   player = players[pieceToMove.playerNumber - 1]
   console.log("movePiece Enter", player)
   if(isStartPosition) {    
@@ -39,12 +40,16 @@ export const movePiece = (data) => {
       newPlayerLocation: isStartPosition ? 5 : pieceToMove.playerLocation + movePositions
     }  
     console.log("payLoad:", pieceMovePayload)
-    pieceMove(pieceMovePayload)
+    if(pieceMovePayload.newPlayerLocation <= 36){
+      pieceMove(pieceMovePayload)
+    } else {
+      console.log("Cannot move")
+    }
   } else {
     //if it's not
     //check if own piece
-    console.log("isOccupied")
-    otherPiece = data.boardPostion.pieceOccupying
+    console.log("isOccupied", boardPosition)
+    otherPiece = boardPosition.pieceOccupying
     if(isPieceFromSamePlayer(pieceToMove, otherPiece)) {
       //if it is, piece can't move
       console.log("is piece from same player")
