@@ -28,7 +28,11 @@ const boardSlice = createSlice({
   initialState: initialState,
   reducers: {
     addPlayer(state, action){
+      console.log("addPlayer:", action.payload)
       state.players.push(action.payload)
+    },
+    deletePlayer(state, action){      
+      state.players = state.players.filter((p, i) => i !== parseInt(action.payload))
     },
     updateRoll(state, action){
       state.currentRoll = action.payload
@@ -39,5 +43,5 @@ const boardSlice = createSlice({
   }
 })
 
-export const { addPlayer, updateRoll, updateInProgress } = boardSlice.actions
+export const { addPlayer, updateRoll, updateInProgress, deletePlayer } = boardSlice.actions
 export default boardSlice.reducer

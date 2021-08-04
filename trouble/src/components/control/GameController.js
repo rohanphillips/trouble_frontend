@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import AddPlayer from '../player/AddPlayer'
+import Players from '../player/Players'
 
 const GameController = (props) => {
   const [addingPlayer, setAddingPlayer] = useState(false)
@@ -9,11 +10,15 @@ const GameController = (props) => {
   const playerAdded = () => {
     setAddingPlayer(false)
   }
+  console.log("<4", addingPlayer, playerCount,  addingPlayer && playerCount<4)
   return (
     <div>
       Game Console
       <div>
-        {!inProgress && !addingPlayer &&
+        <Players/>
+      </div>
+      <div>
+        {!inProgress && !addingPlayer && playerCount < 4 &&
           <button onClick={() => setAddingPlayer(true)}>Add Player</button>
 }
       </div>
@@ -23,7 +28,7 @@ const GameController = (props) => {
         }
       </div>
       {addingPlayer &&
-        <AddPlayer playerAdded={playerAdded} player={playerCount + 1}/>
+        <AddPlayer playerAdded={playerAdded} playerCount={playerCount}/>
       } 
     </div>
   )
