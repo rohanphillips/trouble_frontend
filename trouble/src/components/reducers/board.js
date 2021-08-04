@@ -39,9 +39,12 @@ const boardSlice = createSlice({
     }, 
     updateInProgress(state, action){
       state.inProgress = action.payload
+    },
+    updatePositionOccupied(state, action){
+      state.positions[action.payload].occupied = true
     }
   }
 })
 
-export const { addPlayer, updateRoll, updateInProgress, deletePlayer } = boardSlice.actions
+export const { addPlayer, updateRoll, updateInProgress, deletePlayer, updatePositionOccupied } = boardSlice.actions
 export default boardSlice.reducer

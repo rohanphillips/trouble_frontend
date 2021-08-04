@@ -2,15 +2,21 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import AddPlayer from '../player/AddPlayer'
 import Players from '../player/Players'
+ import { updatePositionOccupied } from '../reducers/board'
 
 const GameController = (props) => {
   const [addingPlayer, setAddingPlayer] = useState(false)
-  const { currentRoll, inProgress, playerCount } = props
+  const { currentRoll, inProgress, playerCount, updatePositionOccupied } = props
 
   const playerAdded = () => {
     setAddingPlayer(false)
   }
-  
+
+  const mockPosition = () => {
+    updatePositionOccupied(17)
+    console.log("mockPosition")
+  }
+
   return (
     <div>
       Game Console
@@ -24,7 +30,7 @@ const GameController = (props) => {
       </div>
       <div>
         {playerCount > 0 &&
-          <button>Start Game</button>
+          <button onClick={mockPosition}>Start Game</button>
         }
       </div>
       {addingPlayer &&
@@ -39,6 +45,6 @@ export default connect( state => {
     settings: state.settingsState,
     currentRoll: state.boardState.currentRoll,
     inProgress: state.boardState.inProgress,
-    playerCount: state.boardState.players.length
+    playerCount: state.boardState.players.length,
   }
-})(GameController)
+}, { updatePositionOccupied })(GameController)
