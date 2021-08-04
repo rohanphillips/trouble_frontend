@@ -66,7 +66,7 @@ export const between = (x, min, max) => {
 export const initializePosition = (counter) => {
   let layerID = ""
   let style = ""
-  let boardPosition = counter
+  let layerPosition = counter
   let base
   if(between(counter, 1, 28)){
     layerID = "board_layer"  
@@ -76,33 +76,33 @@ export const initializePosition = (counter) => {
     style = "elipsoid_position"
     base = 28
     if(between(counter, 29, 32)){
-      boardPosition = counter - base;
+      layerPosition = counter - base;
     } else if(between(counter, 33, 36)){
-      boardPosition = counter - base + 3;
+      layerPosition = counter - base + 3;
     } else if(between(counter, 37, 40)){
-      boardPosition = counter - base + 6;
+      layerPosition = counter - base + 6;
     } else if(between(counter, 41, 44)){
-      boardPosition = counter - base + 9;
+      layerPosition = counter - base + 9;
     }
   } else if(between(counter, 45, 60)){
     layerID = "home_layer"
     style = "elipsoid_home"
     base = 45
     if(between(counter, 45, 48)){
-      boardPosition = counter - base;
+      layerPosition = counter - base;
     } else if(between(counter, 49, 52)){
-      boardPosition = counter - base + 3;
+      layerPosition = counter - base + 3;
     } else if(between(counter, 53, 56)){
-      boardPosition = counter - base + 6;
+      layerPosition = counter - base + 6;
     } else if(between(counter, 57, 60)){
-      boardPosition = counter - base + 9;
+      layerPosition = counter - base + 9;
     }
   }
 
   return {
     occupied: false,
     pieceOccupying: null,
-    boardPosition: boardPosition,
+    layerPosition: layerPosition,
     layerID: layerID,
     style: style
   }

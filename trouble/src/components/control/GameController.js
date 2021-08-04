@@ -7,7 +7,7 @@ import { initializeBoard } from '../helpers/controller/helpers'
 
 const GameController = (props) => {
   const [addingPlayer, setAddingPlayer] = useState(false)
-  const { currentRoll, inProgress, playerCount, updateInProgress, players, initializePlayer } = props
+  const { inProgress, playerCount, updateInProgress, players, initializePlayer, pieceToMove } = props
 
   const playerAdded = () => {
     setAddingPlayer(false)
@@ -17,7 +17,7 @@ const GameController = (props) => {
     updateInProgress(true)
     initializeBoard(initializePlayer, players)
   }
-
+  console.log("Controller", pieceToMove)
   return (
     <div>
       Game Console
@@ -27,11 +27,16 @@ const GameController = (props) => {
       <div>
         {!inProgress && !addingPlayer && playerCount < 4 &&
           <button onClick={() => setAddingPlayer(true)}>Add Player</button>
-}
+        }
       </div>
       <div>
         {playerCount > 0 &&
           <button onClick={startGame}>Start Game</button>
+        }
+      </div>
+      <div>
+        {playerCount > 0 &&
+          <button >Play</button>
         }
       </div>
       {addingPlayer &&
@@ -47,6 +52,7 @@ export default connect( state => {
     currentRoll: state.boardState.currentRoll,
     inProgress: state.boardState.inProgress,
     playerCount: state.boardState.players.length,
-    players: state.boardState.players
+    players: state.boardState.players,
+    pieceToMove: state.boardState.pieceToMove
   }
 }, { updateInProgress, initializePlayer })(GameController)

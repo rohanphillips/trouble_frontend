@@ -11,6 +11,12 @@ export const getDefaultPlayerColors = (currentPlayers, defaultColors) => {
 
 export const initializeBoard = (initializePlayer, players) => {  
   for(let i = 0; i < players.length; i++){
-    initializePlayer(i)
+    for(let j = 1; j <= 4; j++){
+      const payload = {
+        player: i,
+        piece: j
+      }
+      initializePlayer(payload)
+    }
   }
 }
