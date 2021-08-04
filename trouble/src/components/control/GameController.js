@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import AddPlayer from '../player/AddPlayer'
 import Players from '../player/Players'
- import { updatePositionOccupied, updateInProgress } from '../reducers/board'
+import { updateInProgress, initializePlayer } from '../reducers/board'
+import { initializeBoard } from '../helpers/controller/helpers'
 
 const GameController = (props) => {
   const [addingPlayer, setAddingPlayer] = useState(false)
-  const { currentRoll, inProgress, playerCount, updatePositionOccupied, updateInProgress } = props
+  const { currentRoll, inProgress, playerCount, updateInProgress, players, initializePlayer } = props
 
   const playerAdded = () => {
     setAddingPlayer(false)
@@ -14,6 +15,7 @@ const GameController = (props) => {
 
   const startGame = () => {
     updateInProgress(true)
+    initializeBoard(initializePlayer, players)
   }
 
   return (
@@ -45,5 +47,6 @@ export default connect( state => {
     currentRoll: state.boardState.currentRoll,
     inProgress: state.boardState.inProgress,
     playerCount: state.boardState.players.length,
+    players: state.boardState.players
   }
-}, { updatePositionOccupied, updateInProgress })(GameController)
+}, { updateInProgress, initializePlayer })(GameController)
