@@ -41,7 +41,7 @@ const boardSlice = createSlice({
       state.inProgress = action.payload
     },
     updatePositionOccupied(state, action){
-      state.positions[action.payload].occupied = true
+      state.positions[action.payload].occupied = action.payload
     }
   }
 })
