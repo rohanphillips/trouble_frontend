@@ -5,7 +5,6 @@ import { rgbToHex } from '../helpers/controller/helpers'
 
 const Player = (props) => {
   const { deletePlayer, player, playerID, players } = props
-  console.log("playerID:", playerID)
   return (
     <div style={{backgroundColor: `${rgbToHex(player.color)}`}}>
       <div>

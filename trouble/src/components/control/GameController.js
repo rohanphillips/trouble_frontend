@@ -10,7 +10,7 @@ const GameController = (props) => {
   const playerAdded = () => {
     setAddingPlayer(false)
   }
-  console.log("<4", addingPlayer, playerCount,  addingPlayer && playerCount<4)
+  
   return (
     <div>
       Game Console
