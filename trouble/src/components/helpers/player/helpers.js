@@ -79,6 +79,7 @@ const createPiece = (id, info) => {
     id: id,
     playerNumber: info.playerNo,
     color: rgbToHex(info.playerColor),
+    playerLocation: -1,
     boardLocation: -1
   }
   return piece

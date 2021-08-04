@@ -16,6 +16,7 @@ export const initialState = {
   currentRoll: 3, 
   inProgress: false,
   currentPlayer: 1,
+  isMoveRequested: false,
   pieceToMove: null,
   defaultPlayerColors: [
     {r: 255, g: 0, b: 0, a: 1},
@@ -49,6 +50,7 @@ const boardSlice = createSlice({
       const player = state.players[action.payload.player]
       const pieceNumber = action.payload.piece
       const piece = player.pieces[pieceNumber]
+      piece.playerLocation = pieceNumber
       const location = player.locations[pieceNumber]
       const boardLocation = state.positions[location.boardLocation]
       piece.boardLocation = location.boardLocation
@@ -59,10 +61,14 @@ const boardSlice = createSlice({
       boardLocation.style = "player_piece"
     },
     updatePieceToMove(state, action){
+      state.isMoveRequested = true
       state.pieceToMove = action.payload
+    },
+    isMoveRequestedSet(state, action){
+      state.isMoveRequested = action.payload
     }
   }
 })
 
-export const { addPlayer, updateRoll, updateInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove} = boardSlice.actions
+export const { addPlayer, updateRoll, updateInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet} = boardSlice.actions
 export default boardSlice.reducer
