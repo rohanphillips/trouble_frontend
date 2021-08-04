@@ -108,6 +108,25 @@ export const initializePosition = (counter) => {
   }
 }
 
+export const resetStyle = (boardLocation) => {
+  let style
+  switch(boardLocation.layerID){
+    case "board_layer":
+      style = "elipsoid_board"
+      break
+    case "start_layer":
+      style = "elipsoid_board"
+      break
+    case "home_layer":
+      style = "elipsoid_home"
+      break
+    default:
+      style = "elipsoid_board"
+      break
+  }
+  return style
+}
+
 export const randomColor = () => {
   return "#" + Math.floor(Math.random()*16777215).toString(16);
 }

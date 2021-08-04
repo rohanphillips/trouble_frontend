@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { initializePosition } from '../helpers/board/helpers'
+import { initializePosition, resetStyle } from '../helpers/board/helpers'
 
 const createPositions = (count) => {
   const positions = {}
@@ -78,7 +78,7 @@ const boardSlice = createSlice({
       let boardPosition = state.positions[oldLocation]
       boardPosition.occupied = false
       boardPosition.pieceOccupying = null
-      boardPosition.style = "elipsoid_board"
+      boardPosition.style = resetStyle(boardPosition)
 
       boardPosition = state.positions[newLocation]
       boardPosition.occupied = true
