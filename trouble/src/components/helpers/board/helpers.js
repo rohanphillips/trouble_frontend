@@ -127,6 +127,21 @@ export const resetStyle = (boardLocation) => {
   return style
 }
 
+export const nextPlayer = (currentRoll, currentPlayer, players) => {
+  let player
+  if(currentRoll === 6){
+    player = currentPlayer
+  } else {
+    if(currentPlayer === players.length){
+      player = 1
+    } else {
+      player = currentPlayer + 1
+    }
+  }
+  console.log("nextPlayer", player)
+  return player
+}
+
 export const randomColor = () => {
   return "#" + Math.floor(Math.random()*16777215).toString(16);
 }

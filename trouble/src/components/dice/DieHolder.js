@@ -14,6 +14,7 @@ const DieHolder = (props) => {
         { gameInProgress &&          
           <ReactDice 
             disableIndividual={!gameInProgress}
+            rollTime={1}
             numDice={1}
             dieSize={150}
             defaultRoll={currentRoll}
