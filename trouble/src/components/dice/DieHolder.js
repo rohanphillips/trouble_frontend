@@ -10,14 +10,19 @@ const DieHolder = (props) => {
 
   return (
     <div >
-      <ReactDice 
-        disableIndividual={!gameInProgress}
-        numDice={1}
-        dieSize={150}
-        defaultRoll={currentRoll}
-        rollDone={updateRoll}
-        ref={diceRef}
-      />
+      <div>
+        { gameInProgress &&          
+          <ReactDice 
+            disableIndividual={!gameInProgress}
+            numDice={1}
+            dieSize={150}
+            defaultRoll={currentRoll}
+            rollDone={updateRoll}
+            ref={diceRef}
+          />
+        }
+      </div>
+      
     </div>
   )
 }

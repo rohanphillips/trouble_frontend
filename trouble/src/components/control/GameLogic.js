@@ -4,7 +4,7 @@ import { isMoveRequestedSet, pieceMove } from '../reducers/board'
 import { movePiece } from '../helpers/gamelogic/helpers'
 
 const GameLogic = (props) => {
-  const { pieceToMove, isMoveRequested, isMoveRequestedSet, boardPositions, players, pieceMove } = props
+  const { pieceToMove, isMoveRequested, isMoveRequestedSet, boardPositions, players, pieceMove, currentRoll } = props
   
   console.log("GameLogic:", isMoveRequested, pieceToMove)
   if(isMoveRequested){
@@ -12,8 +12,8 @@ const GameLogic = (props) => {
       boardPositions: boardPositions,
       pieceToMove: pieceToMove,
       players: players,
-      movePositions: 1,
-      pieceMove: pieceMove
+      movePositions: currentRoll,
+      pieceMove: pieceMove,
     }
     movePiece(data);
     isMoveRequested && isMoveRequestedSet(false)
@@ -30,5 +30,6 @@ export default connect ( state => {
     isMoveRequested: state.boardState.isMoveRequested,
     boardPositions: state.boardState.positions,
     players: state.boardState.players,
+    currentRoll: state.boardState.currentRoll,
   }
 }, { isMoveRequestedSet, pieceMove }) (GameLogic)

@@ -32,7 +32,7 @@ const GameController = (props) => {
         }
       </div>
       <div>
-        {playerCount > 0 &&
+        {playerCount > 0 && !gameInProgress &&
           <button onClick={startGame}>Start Game</button>
         }
       </div>

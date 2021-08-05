@@ -9,17 +9,18 @@ export const movePiece = (data) => {
   //handle if it is
   //piece needs to move to start location
   //get player start board location from playerPosition 5
-  if(pieceToMove.playerLocation === 36) return false
+  if(pieceToMove.playerLocation === 36 || pieceToMove.playerLocation + movePositions > 36) return false
   player = players[pieceToMove.playerNumber - 1]
   console.log("movePiece Enter", player)
-  if(isStartPosition) {    
+  if (isStartPosition) {    
+    if(movePositions !== 6) return false
     console.log("isStartPosition")
     const playerStartLocation = player.locations[5].boardLocation
     console.log("playerStartLocation", playerStartLocation)
     boardPosition = boardPositions[playerStartLocation]
     console.log("boardPosition", boardPosition)
     newLocation = playerStartLocation
-  } else {
+  } else if(!isStartPosition) {
     //not a start position, get boardPosition x spaces ahead
     console.log("isNotStartPosition")
     const moveToLocation = player.locations[pieceToMove.playerLocation + movePositions].boardLocation

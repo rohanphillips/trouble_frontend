@@ -7,12 +7,13 @@ import { updatePieceToMove } from '../reducers/board'
 const Position = (props) => {  
   const { layerPosition, layerID, style } = props.boardPositionData
   const { height, width, boardReducer, homeReducer } = props.settings
-  const { occupied, currentPlayer, updatePieceToMove } = props
+  const { occupied, currentPlayer, updatePieceToMove, diceRolled } = props
 
   const positionStyle = createPositionStyle(layerID, height, width, boardReducer, homeReducer, layerPosition)
 
   const positionClicked = () => {
-    if(occupied) {
+    console.log("diceRolled: ", diceRolled)
+    if(occupied && diceRolled) {
       const piece = props.boardPositionData.pieceOccupying
       const moveEligible = currentPlayer === piece.playerNumber
       updatePieceToMove(piece)
@@ -38,6 +39,7 @@ export default connect( ( state, ownProps ) => {
     occupied: state.boardState.positions[position].occupied,
     boardPositionData: state.boardState.positions[position],
     settings: state.settingsState,
-    currentPlayer: state.boardState.currentPlayer
+    currentPlayer: state.boardState.currentPlayer,
+    diceRolled: state.boardState.diceRolled,
   }
 }, { updatePieceToMove })(Position)

@@ -13,6 +13,7 @@ const createPositions = (count) => {
 export const initialState = {  
   players: [],
   positions: createPositions(60),
+  diceRolled: false,
   currentRoll: 3, 
   gameInProgress: false,
   currentPlayer: 1,
@@ -38,6 +39,7 @@ const boardSlice = createSlice({
     },
     updateRoll(state, action){
       state.currentRoll = action.payload
+      state.diceRolled = true
     }, 
     updateGameInProgress(state, action){
       state.gameInProgress = action.payload
@@ -85,8 +87,8 @@ const boardSlice = createSlice({
       boardPosition.pieceOccupying = modifyPiece
       boardPosition.style = "player_piece"
 
-      
       state.isMoveRequested = false
+      state.diceRolled = false
     }
   }
 })
