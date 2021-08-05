@@ -14,7 +14,7 @@ export const initialState = {
   players: [],
   positions: createPositions(60),
   currentRoll: 3, 
-  inProgress: false,
+  gameInProgress: false,
   currentPlayer: 1,
   isMoveRequested: false,
   pieceToMove: null,
@@ -39,8 +39,8 @@ const boardSlice = createSlice({
     updateRoll(state, action){
       state.currentRoll = action.payload
     }, 
-    updateInProgress(state, action){
-      state.inProgress = action.payload
+    updateGameInProgress(state, action){
+      state.gameInProgress = action.payload
     },
     updatePositionOccupied(state, action){
       state.positions[action.payload].occupied = action.payload
@@ -91,5 +91,5 @@ const boardSlice = createSlice({
   }
 })
 
-export const { addPlayer, updateRoll, updateInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet, pieceMove} = boardSlice.actions
+export const { addPlayer, updateRoll, updateGameInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet, pieceMove} = boardSlice.actions
 export default boardSlice.reducer

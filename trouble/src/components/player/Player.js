@@ -4,7 +4,7 @@ import { deletePlayer } from '../reducers/board'
 import { rgbToHex } from '../helpers/controller/helpers'
 
 const Player = (props) => {
-  const { deletePlayer, player, playerID, inProgress } = props
+  const { deletePlayer, player, playerID, gameInProgress } = props
   return (
     <div style={{backgroundColor: `${rgbToHex(player.color)}`}}>
       <div>
@@ -14,7 +14,7 @@ const Player = (props) => {
         Color:
       </div>
       <div>
-        { !inProgress &&
+        { !gameInProgress &&
           <button id={playerID} onClick={event => deletePlayer(parseInt(event.target.id))}>Delete</button>
 }
       </div>
@@ -24,6 +24,6 @@ const Player = (props) => {
 
 export default connect( state => {
   return {
-    inProgress: state.boardState.inProgress
+    gameInProgress: state.boardState.gameInProgress
   }
 }, { deletePlayer }) (Player)

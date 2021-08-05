@@ -3,19 +3,19 @@ import { connect } from 'react-redux'
 import AddPlayer from '../player/AddPlayer'
 import Players from '../player/Players'
 import GameLogic from './GameLogic'
-import { updateInProgress, initializePlayer } from '../reducers/board'
+import { updateGameInProgress, initializePlayer } from '../reducers/board'
 import { initializeBoard } from '../helpers/controller/helpers'
 
 const GameController = (props) => {
   const [addingPlayer, setAddingPlayer] = useState(false)
-  const { inProgress, playerCount, updateInProgress, players, initializePlayer } = props
+  const { gameInProgress, playerCount, updateGameInProgress, players, initializePlayer } = props
 
   const playerAdded = () => {
     setAddingPlayer(false)
   }
 
   const startGame = () => {
-    updateInProgress(true)
+    updateGameInProgress(true)
     initializeBoard(initializePlayer, players)
   }
 
@@ -27,7 +27,7 @@ const GameController = (props) => {
         <Players/>
       </div>
       <div>
-        {!inProgress && !addingPlayer && playerCount < 4 &&
+        {!gameInProgress && !addingPlayer && playerCount < 4 &&
           <button onClick={() => setAddingPlayer(true)}>Add Player</button>
         }
       </div>
@@ -52,8 +52,8 @@ export default connect( state => {
   return {
     settings: state.settingsState,
     currentRoll: state.boardState.currentRoll,
-    inProgress: state.boardState.inProgress,
+    gameInProgress: state.boardState.gameInProgress,
     playerCount: state.boardState.players.length,
     players: state.boardState.players, 
   }
-}, { updateInProgress, initializePlayer })(GameController)
+}, { updateGameInProgress, initializePlayer })(GameController)
