@@ -42,6 +42,9 @@ const boardSlice = createSlice({
       state.currentRoll = action.payload
       state.diceRolled = true
     }, 
+    updateDiceRolled(state, action){ 
+      state.diceRolled = action.payload
+    },
     updateGameInProgress(state, action){
       state.gameInProgress = action.payload
     },
@@ -99,5 +102,5 @@ const boardSlice = createSlice({
   }
 })
 
-export const { addPlayer, updateRoll, updateGameInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet, pieceMove, updatePlayerNumber} = boardSlice.actions
+export const { addPlayer, updateRoll, updateGameInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet, pieceMove, updatePlayerNumber, updateDiceRolled} = boardSlice.actions
 export default boardSlice.reducer

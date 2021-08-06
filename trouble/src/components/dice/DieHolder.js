@@ -6,12 +6,12 @@ import { updateRoll } from '../reducers/board'
 
 const DieHolder = (props) => {
   const diceRef = useRef()
-  const { currentRoll, updateRoll, gameInProgress } = props
+  const { currentRoll, updateRoll, gameInProgress, diceRolled } = props
 
   return (
     <div >
       <div>
-        { gameInProgress &&          
+        { gameInProgress &&        
           <ReactDice 
             disableIndividual={!gameInProgress}
             rollTime={1}
@@ -31,6 +31,7 @@ const DieHolder = (props) => {
 export default connect( state => {
   return {
     currentRoll: state.boardState.currentRoll,
-    gameInProgress: state.boardState.gameInProgress
+    gameInProgress: state.boardState.gameInProgress,
+    diceRolled: state.boardState.diceRolled
   }
 }, {updateRoll}) (DieHolder)

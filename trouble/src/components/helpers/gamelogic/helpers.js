@@ -73,3 +73,9 @@ const isPieceFromSamePlayer = (piece, otherPiece) => {
 const isBoardPositionOccupied = (boardPosition) => {
   return boardPosition.occupied
 }
+
+export const allPlayersAtStart = (players, currentPlayer) => {
+  const pieces = players[currentPlayer - 1].pieces
+  console.log("players", players, currentPlayer, Object.values(pieces))
+  return Object.values(pieces).filter(p => p.playerLocation <= 4).length === 4
+}
