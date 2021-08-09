@@ -4,10 +4,11 @@ import Position from '../position/Position'
 import styles from './Board.module.css'
 import {createLayerStyle} from '../helpers/board/helpers'
 import DieHolder from '../dice/DieHolder'
-
+import Message from '../message/Message'
 
 const Board = (props) => {
   const { height, width, boardReducer, homeReducer } = props.settings
+  const { diceMessageActive, diceMessage } = props
   return (
     <div>
       <h1>
@@ -32,6 +33,7 @@ const Board = (props) => {
         <Position position={44}/>  
         <div className={styles.popper_layer} style={createLayerStyle("popper_layer", height, width, boardReducer, homeReducer)}>
           <DieHolder/> 
+          { diceMessageActive && <Message message={diceMessage}/>}
         </div>
             
         <div className={styles.board_layer} style={createLayerStyle("board_layer", height, width, boardReducer, homeReducer)}>
@@ -90,7 +92,8 @@ const Board = (props) => {
 export default connect( state => {
   return {
     settings: state.settingsState,
-    state: state
+    diceMessageActive: state.boardState.messages.diceMessage.active,
+    diceMessage: state.boardState.messages.diceMessage.message
   }
 }
 )(Board)

@@ -25,7 +25,13 @@ export const initialState = {
     {r: 0, g: 255, b: 0, a: 1},
     {r: 0, g: 0, b: 255, a: 1},
     {r: 255, g: 255, b: 0, a: 1},
-  ]
+  ],
+  messages: {
+    diceMessage: {
+      active: true,
+      message: "Awaiting Game Start"
+    }
+  }
 }
 
 const boardSlice = createSlice({
@@ -73,6 +79,7 @@ const boardSlice = createSlice({
     updatePieceToMove(state, action){
       state.isMoveRequested = true
       state.pieceToMove = action.payload
+      console.log("updatePieceToMove:", action.payload)
     },
     isMoveRequestedSet(state, action){
       state.isMoveRequested = action.payload
@@ -98,9 +105,14 @@ const boardSlice = createSlice({
       state.isMoveRequested = false
       state.updatePlayerNumber = true;
       state.diceRolled = false
+    },
+    updateMessage(state, action){
+      console.log("updateMessage", action.payload)
+      const {center, message} = action.payload
+      state.messages[center] = message
     }
   }
 })
 
-export const { addPlayer, updateRoll, updateGameInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet, pieceMove, updatePlayerNumber, updateDiceRolled} = boardSlice.actions
+export const { addPlayer, updateRoll, updateGameInProgress, deletePlayer, updatePositionOccupied, initializePlayer, updatePieceToMove, isMoveRequestedSet, pieceMove, updatePlayerNumber, updateDiceRolled, updateMessage} = boardSlice.actions
 export default boardSlice.reducer
